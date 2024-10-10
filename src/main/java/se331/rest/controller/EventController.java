@@ -1,7 +1,5 @@
 package se331.rest.controller;
 
-
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.rest.entity.Event;
 
-import jakarta.annotation.PostConstruct;
 import se331.rest.service.EventService;
 import se331.rest.util.LabMapper;
 
@@ -25,7 +22,6 @@ public class EventController {
             required = false) Integer perPage
             , @RequestParam(value= "_page", required = false) Integer page) {
         Page<Event> pageOutput = eventService.getEvents(perPage, page);
-//        Integer eventSize = eventService.getEventSize();
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count",
                 String.valueOf(pageOutput.getTotalElements()));

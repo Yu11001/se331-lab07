@@ -21,15 +21,6 @@ public class EventDaoDbImpl implements EventDao {
     }
 
     @Override
-//    public List<Event> getEvents(Integer pageSize, Integer page) {
-//        List<Event> events = (List<Event>) eventRepository.findAll();
-//        pageSize = pageSize == null ? events.size() : pageSize;
-//        page = page == null ? 1 : page;
-//        int firstIndex = (page - 1) * pageSize;
-//        List<Event> output = events.subList (firstIndex, firstIndex + pageSize) ;
-//
-//        return output;
-//      }
     public Page<Event> getEvents(Integer pageSize, Integer page) {
         return eventRepository.findAll(PageRequest.of(page-1, pageSize));
     }
